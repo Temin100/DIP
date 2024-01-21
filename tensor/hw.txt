@@ -1,0 +1,54 @@
+import numpy as np
+import tensorflow as tf
+
+########### ex. 1
+vect = tf.constant([ 15, 30, 45])
+scalarr = tf.constant(33)
+Matrixx = tf.constant([[1, 2], [3, 4]])
+tensorr = tf.constant([
+    [[1, 2], [3, 4]],
+    [[5, 6], [7, 8]],
+    [[9, 10], [11, 12]]
+    ])
+vect, scalarr, Matrixx, tensorr
+
+############### ex. 2
+def tf_size_func(tensorr):
+  print("Shape ", tensorr.shape)
+  print("Rank ", tensorr.ndim)
+  print("Size ", tf.size(tensorr))
+  print("* * * * * * *")
+
+tf_size_func(vect)
+tf_size_func(scalarr)
+tf_size_func(Matrixx)
+tf_size_func(tensorr)
+
+############## ex. 3
+tens_1 = tf.random.uniform(shape=[5, 300])
+tens_2 = tf.random.uniform(shape=[5, 300])
+
+############# ex. 4
+tf.matmul(tf.transpose(tens_1), tens_2)
+
+############# ex. 5
+tf.tensordot(tf.transpose(tens_1), tens_2, axes=1)
+
+############# ex. 6
+tens_3 = tf.random.uniform(shape=[224, 224, 3])
+
+############# ex. 7
+min = tf.reduce_min(tens_3).numpy()
+max = tf.reduce_max(tens_3).numpy()
+
+############# ex. 8
+tens_4 = tf.random.uniform(shape=[1, 224, 224, 3])
+tensor_4_squeezed = tf.squeeze(tens_4)
+
+############# ex. 9
+a = random_tensor = tf.random.uniform(shape=[10], minval=0, maxval=10, dtype=tf.int32)
+print(tf.argmax(a).numpy())
+
+############# ex. 10
+num_classes = len(tf.unique(a)[0])
+C_one_hot = tf.one_hot(indices=a, depth=num_classes)
